@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+	padding: 0;
+	margin: 0;
+	font-family: 'Roboto', sans-serif;
+	background-color: #f9f9f9;
+	overflow-x: hidden;
+}
+
+nav.navbar {
+	height: 60px;
+	width: 100%;
+	padding: 0;
+	position: fixed;
+	background-color: #fff;
+	z-index: 999;
+}
+
+nav.navbar .navbar-name {
+	/* width: 225px; */
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	text-align: center;
+}
+
+nav.navbar .navbar-name a {
+    text-decoration: none;
+}
+
+nav.navbar .navbar-name button {
+	border: none;
+	outline: none;
+	background-color: transparent;
+	/* margin-left: 10px; */
+	font-size: 1.1rem;
+}
+
+nav.navbar .navbar-name button:hover {
+	color: blue;
+}
+
+nav.navbar .navbar-search {
+	height: 40px;
+	width: 740px;
+	display: flex;
+	align-items: center;
+}
+
+nav.navbar .navbar-search input {
+	height: 35px;
+	width: 100%;
+	padding: 2px 6px;
+	border: 0;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+nav.navbar .navbar-search input:focus {
+	outline: none;
+	border: .5px solid blue;
+}
+
+nav.navbar .navbar-search button {
+	cursor: pointer;
+	height: 35px;
+	width: 70px;
+	outline: none;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+nav.navbar .navbar-search-2 {
+	display: none;
+}
+
+nav.navbar .navbar-search-2 button#search-toggle {
+	border: none;
+	outline: none;
+	background-color: white;
+	margin-right: auto;
+	font-size: 1.1rem;
+}
+
+nav.navbar .navbar-search-2 button#search-toggle:hover {
+	color: blue;
+}
+
+nav.navbar .navbar-menu {
+	height: 40px;
+}
+
+nav.navbar .navbar-menu ul {
+	margin-right: 10px;
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.ui-autocomplete {
+	z-index: 9999;
+	border-radius: 5px;
+}
+
+.wrapper {
+	display: flex;
+}
+
+.wrapper ._sidebar {
+	list-style: none;
+	height: 100vh;
+	width: 230px;
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+    padding: 4rem 0 1rem;
+	/* justify-content: space-evenly; */
+	background-color: #fff;
+	transition: all 1s;
+	z-index: 1;
+    box-shadow: 2px 0 4px hsl(0 4% 15% / 10%);
+}
+
+.wrapper ._sidebar.show {
+	width: 50px;
+}
+
+.wrapper ._sidebar li {
+	height: 50px;
+	padding-left: 20px;
+	cursor: pointer;
+	transition: all .5s;
+}
+
+.wrapper ._sidebar li a {
+    padding-top: 15px;
+	transition: all .5s;
+    text-decoration: none;
+}
+
+.wrapper ._sidebar.show li {
+	padding-left: 15px;
+}
+
+.wrapper ._sidebar li i {
+	margin-top: 17px;
+}
+
+.wrapper ._sidebar li:hover, .wrapper ._sidebar li.active {
+	background-color: #bbb;
+}
+
+.wrapper ._sidebar li span {
+	margin-left: 10px;
+}
+
+.wrapper ._sidebar.show li span {
+	display: none;
+}
+
+.wrapper .content {
+	margin-top: 13vh;
+	margin-left: 225px;
+	width: 100%;
+	transition: all 1s;
+}
+
+.wrapper .content.slider {
+	margin-left: 0;
+}
+
+.wrapper .content .card {
+	max-width: 100%;
+}
+
+.wrapper .content .card ._card-body img {
+	width: 100%;
+	height: 200px;
+}
+
+@media (max-width: 768px) {
+	nav.navbar .navbar-search {
+		width: 175px;
+	}
+
+	nav.navbar .navbar-menu {
+		width: 225px;
+	}
+
+	.wrapper ._sidebar {
+		left: -230px;
+	}
+
+	.wrapper ._sidebar.show {
+		left: 0;
+		width: 90%;
+	}
+
+	.wrapper ._sidebar.show li span {
+		display: inline;
+	}
+
+	.wrapper .content {
+		margin-left: 0;
+	}
+
+	.wrapper .content.slider {
+		/* margin-left: 230px; */
+	}
+
+	.wrapper .content .card ._card-body {
+		display: flex;
+		flex-direction: row;
+	}
+
+	.wrapper .content .card ._card-body img {
+		width: 100px;
+		height: 100px;
+	}
+}
+
+@media (max-width: 584px) {
+	nav.navbar .navbar-name {
+		/* width: 100px; */
+	}
+
+	nav.navbar .navbar-search {
+		display: none;
+	}
+
+	nav.navbar .navbar-search-2 {
+		width: 60px;
+		display: block;
+	}
+
+	nav.navbar .navbar-menu {
+		width: 200px;
+	}
+}
+
+#tambah_produk {
+	border: 1px solid #ddd;
+	width: 60%;
+}
+
+#tambah_produk #btn i {
+	font-size: 10px;
+}
+
+#tambah_produk #btn {
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
+#tambah_produk #btn button {
+	border: none;
+}
+
+@media (max-width: 680px) {
+	#tambah_produk {
+		width: 1.5rem;
+	}
+
+	#tambah_produk #btn button {
+		width: 100%;
+	}
+
+	#tambah_produk #btn {
+		flex-direction: column;
+	}
+}
