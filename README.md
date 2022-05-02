@@ -34,8 +34,15 @@ DB_DATABASE=nama_databse
 DB_USERNAME=root
 DB_PASSWORD=
 ```
-- **Edit tambahkan diakhir file .env**
+- **Tambahkan diakhir file .env**
 ```
 FILESYSTEM_DISK='public'
 ```
-
+- **Migrate table-table ke database**
+```
+php artisan migrate --seed
+```
+- **Jalankan serve laravel**
+```
+php artisan serve
+```
