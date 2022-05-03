@@ -1,6 +1,6 @@
-<p align="center"><a href="" target="_blank"><img src="https://github.com/hakim-asrori/Proyek-Seblak-Krimun/blob/main/public/assets/img/logo.png?raw=true" width="400"></a></p>
+<p align="center"><a href="https://seblak.plazafood.id/" target="_blank"><img src="https://github.com/hakim-asrori/Proyek-Seblak-Krimun/blob/main/public/assets/img/logo.png?raw=true" width="400"></a></p>
 
-## Pre Requisite
+## Prerequisite
 
 - **[Git Bash](https://git-scm.com/downloads)**
 - **[Composer](https://getcomposer.org/Composer-Setup.exe)**
