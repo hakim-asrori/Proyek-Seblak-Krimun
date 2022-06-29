@@ -44,19 +44,21 @@ class FoodController extends Controller
     public function store(Request $request)
     {
         $pecah = substr($request->price, 4, 100);
-        $validasi = $request->validate([
-            'name' => 'required',
-            'price' => 'required',
-            'category_id' => 'required',
-            'image' => 'required|image'
-        ],
-        [
-            'name.required' => 'Nama harap diisi!',
-            'price.required' => 'Harga harap diisi!',
-            'category_id.required' => 'Kategori harap diisi!',
-            'image.required' => 'Gambar harap diisi!',
-            'image.image' => 'Harap masukan tipe gambar!',
-        ]);
+        $validasi = $request->validate(
+            [
+                'name' => 'required',
+                'price' => 'required',
+                'category_id' => 'required',
+                'image' => 'required|image'
+            ],
+            [
+                'name.required' => 'Nama harap diisi!',
+                'price.required' => 'Harga harap diisi!',
+                'category_id.required' => 'Kategori harap diisi!',
+                'image.required' => 'Gambar harap diisi!',
+                'image.image' => 'Harap masukan tipe gambar!',
+            ]
+        );
 
         if ($request->hasFile('image')) {
             $validasi['image'] = $request->file('image')->store('product');
@@ -69,7 +71,7 @@ class FoodController extends Controller
 
         $cek = Food::create($validasi);
 
-        return back()->with('message', "<script>Swal.fire('Selamat!', 'Data Berhasil Ditambahkan', 'success')</script>");
+        return redirect('food')->with('message', "<script>Swal.fire('Selamat!', 'Data Berhasil Ditambahkan', 'success')</script>");
     }
 
     /**
@@ -114,18 +116,20 @@ class FoodController extends Controller
      */
     public function update(Request $request, Food $food)
     {
-        $validasi = $request->validate([
-            'name' => 'required',
-            'price' => 'required',
-            'category_id' => 'required',
-            'image' => 'image'
-        ],
-        [
-            'name.required' => 'Nama harap diisi!',
-            'price.required' => 'Harga harap diisi!',
-            'category_id.required' => 'Kategori harap diisi!',
-            'image.image' => 'Harap masukan tipe gambar!',
-        ]);
+        $validasi = $request->validate(
+            [
+                'name' => 'required',
+                'price' => 'required',
+                'category_id' => 'required',
+                'image' => 'image'
+            ],
+            [
+                'name.required' => 'Nama harap diisi!',
+                'price.required' => 'Harga harap diisi!',
+                'category_id.required' => 'Kategori harap diisi!',
+                'image.image' => 'Harap masukan tipe gambar!',
+            ]
+        );
 
         if ($request->hasFile('image')) {
             Storage::disk('public')->delete($food->image);

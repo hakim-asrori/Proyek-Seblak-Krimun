@@ -5,7 +5,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\RekapController;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,14 +27,15 @@ Route::get('/', function () {
     ];
     return view('landing.index', $data);
 });
-Route::get('/coba', function () {
-    $data = [
-        'product' => App\Models\Food::all(),
-        'category' => App\Models\Category::all(),
-    ];
 
-    return view('coba', $data);
-});
+// Route::get('/coba', function () {
+//     $data = [
+//         'product' => App\Models\Food::all(),
+//         'category' => App\Models\Category::all(),
+//     ];
+
+//     return view('coba', $data);
+// });
 
 Route::get('siteman', [AuthController::class, 'index']);
 Route::post('siteman', [AuthController::class, 'login']);
@@ -49,4 +52,5 @@ Route::middleware(['otentikasi'])->group(function () {
     Route::post('order/{id}', [OrderController::class, 'orderSelesai']);
 
     Route::get('faktur/{id}', [OrderController::class, 'faktur']);
+    Route::get('rekap', [RekapController::class, 'index']);
 });

@@ -42,19 +42,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $validasi = $request->validate([
-            'name' => 'required',
-            'image' => 'required|image'
-        ],
-        [
-            'name.required' => 'Nama kategori harap diisi!',
-            'image.required' => 'Gambar harap diisi!',
-            'image.image' => 'Harap masukan tipe gambar!',
-        ]);
-
-        if ($request->hasFile('image')) {
-            $validasi['image'] = $request->file('image')->store('category');
-        }
+        $validasi = $request->validate(
+            [
+                'name' => 'required',
+            ],
+            [
+                'name.required' => 'Nama kategori harap diisi!',
+            ]
+        );
 
         $validasi['name'] = $request->name;
         $validasi['active'] = 1;
@@ -99,19 +94,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $validasi = $request->validate([
-            'name' => 'required',
-            'image' => 'image'
-        ],
-        [
-            'name.required' => 'Nama kategori harap diisi!',
-            'image.image' => 'Harap masukan tipe gambar!',
-        ]);
-
-        if ($request->hasFile('image')) {
-            Storage::disk('public')->delete($category->image);
-            $validasi['image'] = $request->file('image')->store('category');
-        }
+        $validasi = $request->validate(
+            [
+                'name' => 'required',
+            ],
+            [
+                'name.required' => 'Nama kategori harap diisi!',
+            ]
+        );
 
         $validasi['name'] = $request->name;
         $validasi['active'] = 1;
@@ -129,7 +119,6 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        Storage::disk('public')->delete($category->image);
         $cek =  Category::destroy($category->id);
         if ($cek) {
             echo 1;
