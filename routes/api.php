@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\APICheckoutController;
 use App\Http\Controllers\API\APIFoodController;
+use App\Http\Controllers\API\SignController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('sign/in', [SignController::class, 'in']);
+Route::post('sign/up', [SignController::class, 'up']);
+
 Route::get('food/all', [APIFoodController::class, 'showAll']);
 Route::post('food/search', [APIFoodController::class, 'searchFood']);
 Route::post('category/search', [APIFoodController::class, 'searchCategory']);
-Route::post('checkout', [APICheckoutController::class, 'store']);
+Route::post('checkout', [APICheckoutController::class, 'store'])->middleware('auth:sanctum');

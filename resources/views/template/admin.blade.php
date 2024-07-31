@@ -30,7 +30,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Seblak <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">E-Klontong</div>
             </a>
 
             <hr class="sidebar-divider my-0">

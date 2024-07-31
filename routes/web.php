@@ -28,6 +28,13 @@ Route::get('/', function () {
     return view('landing.index', $data);
 });
 
+Route::get('/invoice/{code}/{date}/{number}', function () {
+    $data = [
+        'category' => Category::all()
+    ];
+    return view('landing.index', $data);
+});
+
 // Route::get('/coba', function () {
 //     $data = [
 //         'product' => App\Models\Food::all(),
@@ -37,12 +44,12 @@ Route::get('/', function () {
 //     return view('coba', $data);
 // });
 
-Route::get('siteman', [AuthController::class, 'index']);
-Route::post('siteman', [AuthController::class, 'login']);
+Route::get('siteman', [AuthController::class, 'index'])->middleware('guest')->name('login');
+Route::post('siteman', [AuthController::class, 'login'])->middleware('guest');
 
 Route::get('logout', [AuthController::class, 'logout']);
 
-Route::middleware(['otentikasi'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', [AdminController::class, 'dashboard']);
     Route::get('food/detail/{id}', [FoodController::class, 'detail']);
     Route::resource('food', FoodController::class);

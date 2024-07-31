@@ -16,7 +16,6 @@
                 width: 100%;
             }
         }
-
     </style>
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">@yield('title')</h1>
@@ -35,17 +34,17 @@
                                     <tr>
                                         <th>Nama</th>
                                         <td>:</td>
-                                        <td>{{ $c->name }}</td>
+                                        <td>{{ $c->user->name }}</td>
                                     </tr>
                                     <tr>
                                         <th>No. WA</th>
                                         <td>:</td>
-                                        <td>{{ $c->phone }}</td>
+                                        <td>{{ $c->user->phone }}</td>
                                     </tr>
                                     <tr>
                                         <th>Alamat</th>
                                         <td>:</td>
-                                        <td>{{ $c->address }}</td>
+                                        <td>{{ $c->user->address }}</td>
                                     </tr>
                                     <tr>
                                         <th>Total Pembayaran</th>
@@ -58,9 +57,9 @@
                                 <form action="{{ url('order/' . $c->id) }}" method="post">
                                     @csrf
                                     <button class="btn btn-primary">Selesai</button>
-                                    <a href="{{ url('faktur/' . $c->id) }}" target="_blank"
+                                    {{-- <a href="{{ url('faktur/' . $c->id) }}" target="_blank"
                                         class="btn btn-info btn-faktur">Cetak
-                                        Bill</a>
+                                        Bill</a> --}}
                                     {{-- <a href="https://api.whatsapp.com/send?phone=6289674614096&text=Pesan dari Seblak Krimun %0A%0ANama Pemesan : {{ $c->name }}%0ANo. WA : {{ $c->phone }}%0AAlamat : {{ $c->address }}%0ATotal Pembayaran : Rp. {{ number_format($c->total, 0, '', '.') }}" class="btn btn-success" target="_blank">Whatsapp</a> --}}
                                 </form>
                             </div>
@@ -69,8 +68,7 @@
                     <div class="col-lg-8 mb-3">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Pesanan <span class="badge bg-success text-white">Pedas Level
-                                        {{ $c->level }}</span></h5>
+                                <h5 class="card-title">Pesanan</h5>
                                 <div class="row">
                                     @foreach ($c->purchase as $p)
                                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-2 mb-3">
