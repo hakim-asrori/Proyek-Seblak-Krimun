@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Checkout;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -11,7 +12,7 @@ class OrderController extends Controller
     {
         $data = [
             'app_title' => 'Orderan',
-            'customer' => Checkout::all()
+            'customer' => Checkout::whereIn('status', [1, 2, 3])->orderBy('created_at', 'desc')->get()
         ];
 
         return view('order.index', $data);
@@ -26,10 +27,25 @@ class OrderController extends Controller
         return view('faktur.index', $data);
     }
 
-    public function orderSelesai($id)
+    public function changeStatus(Request $request, $id)
     {
-        $checkout = Checkout::findOrFail($id)->delete();
+        DB::beginTransaction();
 
-        return back();
+        $checkout = Checkout::find($id);
+        if (!$checkout) {
+            return response()->json(['Messages' => 'Data tidak ditemukan.'], 400);
+        }
+
+        try {
+            $checkout->update([
+                'status' => $request->status
+            ]);
+
+            DB::commit();
+            return response()->json(['Messages' => 'Success'], 200);
+        } catch (\Throwable $th) {
+            DB::commit();
+            return response()->json(['Messages' => $th->getMessage()], 500);
+        }
     }
 }

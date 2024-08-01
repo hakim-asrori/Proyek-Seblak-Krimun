@@ -15,4 +15,9 @@ class Food extends Model
     {
         return $this->hasOne(Category::class, 'id', 'category_id');
     }
+
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class, 'food_id', 'id');
+    }
 }

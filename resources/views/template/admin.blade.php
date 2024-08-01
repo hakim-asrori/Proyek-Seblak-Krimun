@@ -17,7 +17,7 @@
         rel="stylesheet">
 
     <link href="{{ url('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
-
+    @yield('css-content')
 </head>
 
 <body id="page-top">

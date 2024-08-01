@@ -1,6 +1,6 @@
 <div class="container">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800 text-uppercase">E-Klontong</h1>
+        <h1 class="h3 mb-0 text-gray-800 text-uppercase" id="titlePage">E-Klontong</h1>
         <input class="form-control me-2" style="width: 250px" type="search" id="search-food" onkeyup="searchFood()"
             placeholder="Cari..." aria-label="Search" autocomplete="search">
     </div>

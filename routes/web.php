@@ -56,7 +56,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('category', CategoryController::class);
 
     Route::get('order', [OrderController::class, 'index']);
-    Route::post('order/{id}', [OrderController::class, 'orderSelesai']);
+    Route::post('order/{id}', [OrderController::class, 'changeStatus']);
 
     Route::get('faktur/{id}', [OrderController::class, 'faktur']);
     Route::get('rekap', [RekapController::class, 'index']);

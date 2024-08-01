@@ -11,7 +11,7 @@ class APIFoodController extends Controller
     public function showAll()
     {
         $data = [
-            'product' => Food::all()
+            'product' => Food::withCount('purchases')->orderBy('purchases_count', 'desc')->get()
         ];
 
         return view('landing.food', $data);
@@ -20,7 +20,7 @@ class APIFoodController extends Controller
     public function searchFood(Request $request)
     {
         $data = [
-            'product' => Food::where('name', 'like', '%'.$request->term.'%')->get()
+            'product' => Food::where('name', 'like', '%' . $request->term . '%')->get()
         ];
 
         return view('landing.food', $data);
@@ -29,7 +29,7 @@ class APIFoodController extends Controller
     public function searchCategory(Request $request)
     {
         $data = [
-            'product' => Food::where('category_id', 'like', '%'.$request->term.'%')->get()
+            'product' => Food::where('category_id', 'like', '%' . $request->term . '%')->get()
         ];
 
         return view('landing.food', $data);

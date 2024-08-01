@@ -1,3 +1,6 @@
+@if (!request('term'))
+    <h3>Produk Pilihan Untukmu!</h3>
+@endif
 <div class="row">
     @foreach ($product as $p)
         <div class="col-lg-2 col-md-3 col-sm-4 col-xs-2 mb-3">

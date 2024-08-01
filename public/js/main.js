@@ -241,6 +241,21 @@ $(document).ready(function () {
 
     $("body").on("click", "#search-category", function () {
         let categoryId = $(this).data("id");
+
+        if (categoryId == 0) {
+            $("#titlePage").text("E-Klontong");
+            $.ajax({
+                url: `${baseUrl}api/food/all`,
+                type: "get",
+                success: function (response) {
+                    $("#carouselExampleIndicators").css("display", "block");
+                    $("#food-data").html(response);
+                },
+            });
+            return;
+        }
+
+        $("#titlePage").text($(this).attr("title"));
         $.ajax({
             url: baseUrl + "api/category/search",
             type: "POST",
@@ -251,6 +266,7 @@ $(document).ready(function () {
                 $("#food-data").html(response);
             },
         });
+        return;
     });
 
     $("#kirim-data").click(function () {
