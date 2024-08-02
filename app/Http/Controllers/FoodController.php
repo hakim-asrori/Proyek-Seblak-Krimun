@@ -65,7 +65,8 @@ class FoodController extends Controller
         }
 
         $validasi['name'] = $request->name;
-        $validasi['price'] = str_replace('.', '', $pecah);
+        // $validasi['price'] = str_replace('.', '', $pecah);
+        $validasi['price'] = $request->price;
         $validasi['category_id'] = $request->category_id;
         $validasi['active'] = 1;
 
