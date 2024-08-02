@@ -7,9 +7,16 @@
             <input type="text" name="name" id="name" class="form-control" value="{{ $food->name }}">
         </div>
         <div class="form-group">
-            <label for="price">Harga</label>
-            <input type="text" name="price" id="price2" class="form-control"
-                value="Rp. {{ number_format($food->price, 0, '', '.') }}">
+            <div class="form-group">
+                <label for="price">Harga</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Rp</span>
+                    </div>
+                    <input type="number" name="price" id="price" class="form-control"
+                        value="{{ $food->price }}">
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="category_id">Kategori</label>
@@ -46,11 +53,6 @@
             $("#tampilGambar").height("250");
         }
     }
-
-    var rupiah = document.getElementById('price2');
-    rupiah.addEventListener('keyup', function(e) {
-        rupiah.value = formatRupiah(this.value, 'Rp. ');
-    });
 
     function formatRupiah(angka, prefix) {
         var number_string = angka.replace(/[^,\d]/g, '').toString(),

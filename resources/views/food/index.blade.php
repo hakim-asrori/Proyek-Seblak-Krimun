@@ -98,7 +98,12 @@
                         </div>
                         <div class="form-group">
                             <label for="price">Harga</label>
-                            <input type="text" name="price" id="price" class="form-control">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp</span>
+                                </div>
+                                <input type="number" name="price" id="price" class="form-control">
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="category_id">Kategori</label>
@@ -194,10 +199,10 @@
             })
         })
 
-        var rupiah = document.getElementById('price');
-        rupiah.addEventListener('keyup', function(e) {
-            rupiah.value = formatRupiah(this.value, 'Rp. ');
-        });
+        // var rupiah = document.getElementById('price');
+        // rupiah.addEventListener('keyup', function(e) {
+        //     rupiah.value = formatRupiah(this.value, 'Rp. ');
+        // });
 
         function formatRupiah(angka, prefix) {
             var number_string = angka.replace(/[^,\d]/g, '').toString(),
