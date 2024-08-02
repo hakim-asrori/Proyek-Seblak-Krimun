@@ -29,12 +29,15 @@ cartPrint();
 
 function checkDatabase() {
     var cartLocalStorage = JSON.parse(localStorage.getItem("cart"));
+
     var levelPedas = JSON.parse(localStorage.getItem("levelSpicy"));
     level = levelPedas;
     total = 0;
     cartStorage = cartLocalStorage;
-    for (let i = 0; i < cartLocalStorage.length; i++) {
-        total += cartLocalStorage[i].price * cartLocalStorage[i].quantity;
+    if (cartLocalStorage != null) {
+        for (let i = 0; i < cartLocalStorage.length; i++) {
+            total += cartLocalStorage[i].price * cartLocalStorage[i].quantity;
+        }
     }
 }
 
