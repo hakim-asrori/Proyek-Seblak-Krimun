@@ -419,7 +419,6 @@ $(document).ready(function () {
             method: "post",
             data: $(this).serialize(),
             success: function (response) {
-                console.log(response);
                 if (response.ResponseCode == 200) {
                     Toastify({
                         position: "center",
@@ -431,7 +430,7 @@ $(document).ready(function () {
                     }).showToast();
                     localStorage.setItem("xAuth", response.Data.x_auth);
                     $("#signInModal").modal("hide");
-
+                    window.location.reload();
                     return;
                 }
 

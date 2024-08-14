@@ -3,7 +3,7 @@
 @endif
 <div class="row">
     @foreach ($product as $p)
-        <div class="col-lg-2 col-md-3 col-sm-4 col-xs-2 mb-3">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-2 mb-3">
             <div class="card">
                 <img src="{{ url('storage/' . $p->image) }}" height="100" class="card-img-top">
                 <div class="card-body p-2">
