@@ -1,3 +1,9 @@
+<style>
+    .dropdown-menu[data-bs-popper] {
+        left: auto;
+        right: 0;
+    }
+</style>
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
     <div class="container">
         <div class="navbar-name">
