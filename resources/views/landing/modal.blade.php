@@ -3,13 +3,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="buyModalLabel">Checkout</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p class="m-0 p-0">Silahkan periksa lagi, sebelum Checkout</p>
             </div>
             <div class="modal-footer d-flex justify-content-between">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                 <button type="button" class="btn btn-danger" id="kirim-data">Checkout</button>
             </div>
         </div>
@@ -21,7 +21,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="signInModalLabel">Sign In</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="{{ url('api/sign/in') }}" method="post" id="signIn" novalidate class="needs-validation">
                 <div class="modal-body">
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-between">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-danger">Sign In</button>
                 </div>
             </form>
@@ -52,7 +52,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="signUpModelLabel">Sign Up</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="{{ url('api/sign/up') }}" method="post" id="signUp" novalidate class="needs-validation">
                 <div class="modal-body">
@@ -63,7 +63,7 @@
                     </div>
                     <div class="mb-2">
                         <label for="phone">No HP</label>
-                        <input type="text" class="form-control" name="phone" id="phone" autocomplete="phone"
+                        <input type="number" class="form-control" name="phone" id="phone" autocomplete="phone"
                             required maxlength="15" max="15">
                     </div>
                     <div class="mb-2">
@@ -81,10 +81,27 @@
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-between">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-danger">Sign Up</button>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
         </div>
     </div>
 </div>

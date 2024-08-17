@@ -1,4 +1,3 @@
-checkDatabase();
 var baseUrl = $("#base-url").data("url");
 var cartStorage;
 var total;
@@ -24,9 +23,6 @@ if (levelSpicy == null) {
     localStorage.setItem("levelSpicy", JSON.stringify(levelSpicy));
 }
 
-readyFood();
-cartPrint();
-
 function checkDatabase() {
     var cartLocalStorage = JSON.parse(localStorage.getItem("cart"));
 
@@ -44,24 +40,34 @@ function checkDatabase() {
 function searchFood() {
     let food = $("#search-food").val().trim();
 
-    $.ajax({
-        url: baseUrl + "api/food/search",
-        type: "POST",
-        data: { term: food },
-        success: function (response) {
-            $("#carouselExampleIndicators").css("display", "none");
-            $("#food-data").empty();
-            $("#food-data").html(response);
-        },
-    });
+    setTimeout(() => {
+        $.ajax({
+            url: baseUrl + "api/food/search",
+            type: "POST",
+            data: { term: food },
+            success: function (response) {
+                $("#carouselExampleIndicators").css("display", "none");
+                $("#titlePageContent")
+                    .addClass("d-none")
+                    .removeClass("d-block");
+                $("#food-data").empty();
+                $("#food-data").html(response);
+            },
+        });
+    }, 500);
 }
 
+let page = 0;
 function readyFood() {
+    page++;
     $.ajax({
         url: `${baseUrl}api/food/all`,
         type: "get",
+        data: {
+            page: page,
+        },
         success: function (response) {
-            $("#food-data").html(response);
+            $("#food-data").append(response);
         },
     });
 }
@@ -235,6 +241,10 @@ function formatRupiah(angka, prefix) {
 }
 
 $(document).ready(function () {
+    checkDatabase();
+    readyFood();
+    cartPrint();
+
     $.ajaxSetup({
         headers: {
             "X-CSRF-TOKEN": "{{ csrf_token() }}",
@@ -242,11 +252,27 @@ $(document).ready(function () {
         },
     });
 
+    $(window).scroll(function () {
+        if (
+            $(window).scrollTop() + $(window).height() >=
+            $(document).height()
+        ) {
+            readyFood();
+        }
+    });
+
+    if (localStorage.getItem("xAuth") != null) {
+        $("#users").addClass("d-block").removeClass("d-none");
+    } else {
+        $("#users").removeClass("d-block").addClass("d-none");
+    }
+
     $("body").on("click", "#search-category", function () {
         let categoryId = $(this).data("id");
 
         if (categoryId == 0) {
             $("#titlePage").text("E-Klontong");
+            $("#titlePageContent").addClass("d-block").removeClass("d-none");
             $.ajax({
                 url: `${baseUrl}api/food/all`,
                 type: "get",
@@ -259,6 +285,7 @@ $(document).ready(function () {
         }
 
         $("#titlePage").text($(this).attr("title"));
+        $("#titlePageContent").removeClass("d-block").addClass("d-none");
         $.ajax({
             url: baseUrl + "api/category/search",
             type: "POST",
@@ -270,6 +297,12 @@ $(document).ready(function () {
             },
         });
         return;
+    });
+
+    $("#logoutBtn").on("click", function (e) {
+        e.preventDefault();
+        localStorage.removeItem("xAuth");
+        window.location.reload();
     });
 
     $("#kirim-data").click(function () {
@@ -286,7 +319,6 @@ $(document).ready(function () {
             type: "post",
             data: data,
             success: function (response) {
-                console.log(response);
                 if (response.ResponseCode == 201) {
                     document.getElementsByClassName(
                         "total-price"
@@ -501,6 +533,34 @@ $(document).ready(function () {
                     },
                 }).showToast();
                 return;
+            },
+        });
+    });
+
+    $("body").on("click", '[data-target="#profileModal"]', function () {
+        $.ajax({
+            url: $(this).attr("href"),
+            type: "get",
+            success: function (response) {
+                $("#profileModal .modal-content").empty();
+                $("#profileModal .modal-content").html(response);
+            },
+            error: function (error) {
+                window.location.reload();
+            },
+        });
+    });
+
+    $("body").on("click", '[data-target="#changePasswordModal"]', function () {
+        $.ajax({
+            url: $(this).attr("href"),
+            type: "get",
+            success: function (response) {
+                $("#changePasswordModal .modal-content").empty();
+                $("#changePasswordModal .modal-content").html(response);
+            },
+            error: function (error) {
+                window.location.reload();
             },
         });
     });

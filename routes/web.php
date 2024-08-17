@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RekapController;
 use App\Models\Category;
 use App\Models\User;
@@ -26,6 +27,18 @@ Route::get('/', function () {
         'category' => Category::all()
     ];
     return view('landing.index', $data);
+});
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::prefix('profile')->group(function () {
+        Route::get('/', [ProfileController::class, 'index']);
+        Route::put('/', [ProfileController::class, 'update']);
+    });
+
+    Route::prefix('change-password')->group(function () {
+        Route::get('/', [ProfileController::class, 'changePassword']);
+        Route::put('/', [ProfileController::class, 'processChangePassword']);
+    });
 });
 
 Route::get('/invoice/{code}/{date}/{number}', function () {

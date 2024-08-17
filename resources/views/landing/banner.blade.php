@@ -35,5 +35,8 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+    @if (!request('term'))
+        <h3 id="titlePageContent">Produk Pilihan Untukmu!</h3>
+    @endif
     <div id="food-data"></div>
 </div>
