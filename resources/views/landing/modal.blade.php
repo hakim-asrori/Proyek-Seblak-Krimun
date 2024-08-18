@@ -3,13 +3,15 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="buyModalLabel">Checkout</h5>
-                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"
+                    onclick="$('#buyModal').modal('hide')"></button>
             </div>
             <div class="modal-body">
                 <p class="m-0 p-0">Silahkan periksa lagi, sebelum Checkout</p>
             </div>
             <div class="modal-footer d-flex justify-content-between">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                    onclick="$('#buyModal').modal('hide')">Kembali</button>
                 <button type="button" class="btn btn-danger" id="kirim-data">Checkout</button>
             </div>
         </div>
@@ -21,7 +23,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="signInModalLabel">Sign In</h5>
-                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"
+                    onclick="$('#signInModal').modal('hide')"></button>
             </div>
             <form action="{{ url('api/sign/in') }}" method="post" id="signIn" novalidate class="needs-validation">
                 <div class="modal-body">
@@ -39,7 +42,8 @@
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-between">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        onclick="$('#signInModal').modal('hide')">Tutup</button>
                     <button type="submit" class="btn btn-danger">Sign In</button>
                 </div>
             </form>
@@ -52,7 +56,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="signUpModelLabel">Sign Up</h5>
-                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"
+                    onclick="$('#signUpModel').modal('hide')"></button>
             </div>
             <form action="{{ url('api/sign/up') }}" method="post" id="signUp" novalidate class="needs-validation">
                 <div class="modal-body">
@@ -63,8 +68,8 @@
                     </div>
                     <div class="mb-2">
                         <label for="phone">No HP</label>
-                        <input type="number" class="form-control" name="phone" id="phone" autocomplete="phone"
-                            required maxlength="15" max="15">
+                        <input type="number" class="form-control" name="phone" id="phone"
+                            autocomplete="phone" required maxlength="15" max="15">
                     </div>
                     <div class="mb-2">
                         <label for="address">Alamat Lengkap</label>
@@ -81,7 +86,8 @@
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-between">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        onclick="$('#signUpModel').modal('hide')">Tutup</button>
                     <button type="submit" class="btn btn-danger">Sign Up</button>
                 </div>
             </form>
