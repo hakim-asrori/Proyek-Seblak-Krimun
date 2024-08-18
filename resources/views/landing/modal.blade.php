@@ -68,7 +68,7 @@
                     </div>
                     <div class="mb-2">
                         <label for="phone">No HP</label>
-                        <input type="number" class="form-control" name="phone" id="phone"
+                        <input type="text" class="form-control" name="phone" id="phone"
                             autocomplete="phone" required maxlength="15" max="15">
                     </div>
                     <div class="mb-2">
